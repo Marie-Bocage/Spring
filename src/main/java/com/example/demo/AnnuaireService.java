@@ -47,5 +47,10 @@ public class AnnuaireService {
                 personne.setPrenom(p.getPrenom());
             }
         }
+//        for(int i = 0; i < personnes.size(); i++){
+//            if(personnes.get(i).getId() == id){
+//                personnes.set(i, p);
+//            }
+//        }
     }
 }
