@@ -18,4 +18,8 @@ public class AnnuaireDatabaseService {
     public List<Personne> getPersonnes(){
         return personneRepository.findAll();
     }
+
+    public void delete(Integer id){
+        personneRepository.deleteById(id);
+    }
 }
