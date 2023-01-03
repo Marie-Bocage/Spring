@@ -41,16 +41,16 @@ public class AnnuaireService {
     }
 
     public void update(Personne p, Integer id){
-        for(Personne personne : personnes) {
-            if (personne.getId() == id) {
-                personne.setNom(p.getNom());
-                personne.setPrenom(p.getPrenom());
-            }
-        }
-//        for(int i = 0; i < personnes.size(); i++){
-//            if(personnes.get(i).getId() == id){
-//                personnes.set(i, p);
+//        for(Personne personne : personnes) {
+//            if (personne.getId() == id) {
+//                personne.setNom(p.getNom());
+//                personne.setPrenom(p.getPrenom());
 //            }
 //        }
+        for(int i = 0; i < personnes.size(); i++){
+            if(personnes.get(i).getId() == id){
+                personnes.set(i, p);
+            }
+        }
     }
 }

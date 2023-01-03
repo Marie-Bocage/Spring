@@ -14,7 +14,7 @@ public class AdminController {
     @DeleteMapping("personnes/{id}")
     public ResponseEntity deletePersonne(@PathVariable Integer id){
         Personne p = annuaireService.getOnePersonne(id);
-        if(p == null){
+        if (p == null){
             // Indiquer status code : 404
             return ResponseEntity.notFound().build();
         } else {
@@ -25,7 +25,19 @@ public class AdminController {
     }
 
     @PutMapping("personnes/{id}")
-    public void updatePersonne(@PathVariable Integer id, @RequestBody Personne personne){
-        annuaireService.update(personne, id);
+    public ResponseEntity updatePersonne(@PathVariable Integer id, @RequestBody Personne personne){
+        Personne p = annuaireService.getOnePersonne(id);
+        if (p == null){
+            // Indiquer status code : 404
+            return ResponseEntity.notFound().build();
+        } else if (id != personne.getId()){
+            // Indiquer status code : 400
+            return ResponseEntity.badRequest().build();
+        } else {
+            annuaireService.update(personne, id);
+            // Indiquer status code : 200
+            return ResponseEntity.ok().build();
+        }
+
     }
 }
