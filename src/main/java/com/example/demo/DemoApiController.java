@@ -1,9 +1,11 @@
 package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api")
@@ -20,6 +22,17 @@ public class DemoApiController {
     @GetMapping("personnes")
     public List<Personne> getAllPersonne(){
       return annuaireDatabaseService.getPersonnes();
+    }
+
+    @GetMapping("personnes/{id}")
+    public ResponseEntity getOnePersonne(@PathVariable Integer id){
+        Optional<Personne> optional = annuaireDatabaseService.getPersonneById(id);
+        if(optional.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            Personne personne = optional.get();
+            return ResponseEntity.ok(personne);
+        }
     }
 
 //    @Autowired //(injecte un objet dans une variable)

@@ -1,9 +1,11 @@
 package com.example.demo;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AnnuaireDatabaseService {
@@ -25,5 +27,9 @@ public class AnnuaireDatabaseService {
 
     public void update(Integer id, Personne personne){
         personneRepository.save(personne);
+    }
+
+    public Optional<Personne> getPersonneById(Integer id) {
+        return personneRepository.findById(id);
     }
 }
