@@ -26,7 +26,7 @@ public class CitiesApiController {
         return citiesDatabaseService.getCities();
     }
 
-    // GET one cities
+    // GET one city
     @GetMapping("villes/{id}")
     public ResponseEntity getOneCity(@PathVariable Integer id) {
         Optional<Cities> optional = citiesDatabaseService.getCityById(id);
@@ -46,6 +46,20 @@ public class CitiesApiController {
         } else {
             Cities city = optional.get();
             citiesDatabaseService.deleteById(city.getId());
+            return ResponseEntity.ok().build();
+        }
+    }
+
+    // Update by id
+    @PutMapping("villes/{id}")
+    public ResponseEntity updateCity(@PathVariable Integer id, @RequestBody Cities city) {
+        Optional<Cities> optional = citiesDatabaseService.getCityById(id);
+        if(optional.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else if (city.getId() != id) {
+            return ResponseEntity.badRequest().build();
+        } else {
+            citiesDatabaseService.update(city);
             return ResponseEntity.ok().build();
         }
     }

@@ -27,4 +27,8 @@ public class CitiesDatabaseService {
     public void deleteById(Integer id) {
         citiesRepository.deleteById(id);
     }
+
+    public void update(Cities city) {
+        citiesRepository.save(city);
+    }
 }
