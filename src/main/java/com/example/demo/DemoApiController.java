@@ -17,6 +17,11 @@ public class DemoApiController {
         annuaireDatabaseService.addPersonne(personne);
     }
 
+    @GetMapping("personnes")
+    public List<Personne> getAllPersonne(){
+      return annuaireDatabaseService.getPersonnes();
+    }
+
 //    @Autowired //(injecte un objet dans une variable)
 //    AnnuaireService annuaireService;// = new AnnuaireService();
 
