@@ -23,4 +23,8 @@ public class CitiesDatabaseService {
     public Optional<Cities> getCityById(Integer id) {
         return citiesRepository.findById(id);
     }
+
+    public void deleteById(Integer id) {
+        citiesRepository.deleteById(id);
+    }
 }
