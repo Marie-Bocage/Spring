@@ -20,5 +20,7 @@ public class CitiesDatabaseService {
         return citiesRepository.findAll();
     }
 
-
+    public Optional<Cities> getCityById(Integer id) {
+        return citiesRepository.findById(id);
+    }
 }
