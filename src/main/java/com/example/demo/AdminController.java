@@ -15,6 +15,11 @@ public class AdminController {
     public void deletePersonne(@PathVariable Integer id){
         annuaireDatabaseService.delete(id);
     }
+
+    @PutMapping("personnes/{id}")
+    public void updatePersonne(@PathVariable Integer id, @RequestBody Personne personne){
+        annuaireDatabaseService.update(id, personne);
+    }
 //    @Autowired
 //    private AnnuaireService annuaireService;
 //

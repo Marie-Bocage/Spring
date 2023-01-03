@@ -22,4 +22,8 @@ public class AnnuaireDatabaseService {
     public void delete(Integer id){
         personneRepository.deleteById(id);
     }
+
+    public void update(Integer id, Personne personne){
+        personneRepository.save(personne);
+    }
 }
