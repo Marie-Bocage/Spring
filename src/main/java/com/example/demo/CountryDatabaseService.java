@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CountryDatabaseService {
@@ -13,5 +14,9 @@ public class CountryDatabaseService {
 
     public List<Country> findAllCountries(){
         return countryRepository.findAll();
+    }
+
+    public Optional<Country> findById(Integer id) {
+        return countryRepository.findById(id);
     }
 }
