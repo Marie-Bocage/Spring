@@ -31,4 +31,8 @@ public class CitiesDatabaseService {
     public void update(Cities city) {
         citiesRepository.save(city);
     }
+
+    public List<Cities> getAllByCitizensNb(int citizensNb) {
+        return citiesRepository.findAllByCitizensNb(citizensNb);
+    }
 }

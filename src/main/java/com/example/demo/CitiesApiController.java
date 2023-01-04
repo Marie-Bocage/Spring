@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,5 +63,17 @@ public class CitiesApiController {
             citiesDatabaseService.update(city);
             return ResponseEntity.ok().build();
         }
+    }
+
+    // Villes de + de 500 habitants
+    @GetMapping("findcitizensnb")
+    public List<Cities> findAllByCitizensNb(@RequestParam int citizensNb) {
+        List<Cities> result = new ArrayList<>(){};
+        for(Cities cities : citiesDatabaseService.getCities()) {
+            if(cities.getCitizensNb() >= citizensNb) {
+                result.add(cities);
+            }
+        }
+        return result;
     }
 }
