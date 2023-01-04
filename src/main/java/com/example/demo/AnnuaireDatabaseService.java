@@ -40,4 +40,8 @@ public class AnnuaireDatabaseService {
     public List<Personne> getPersonneByNomAndPrenom(String nom, String prenom) {
         return personneRepository.findAllByNomAndPrenom(nom, prenom);
     }
+
+    public int additionner(int a, int b) {
+        return a + b;
+    }
 }
