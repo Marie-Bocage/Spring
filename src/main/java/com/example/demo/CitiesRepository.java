@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CitiesRepository extends JpaRepository<Cities, Integer> {
 
-    public List<Cities> findAllByCitizensNb(int citizensNb);
+    public List<Cities> CitizensNbGreaterThan(int citizensNb);
 }

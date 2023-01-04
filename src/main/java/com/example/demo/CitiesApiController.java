@@ -68,12 +68,6 @@ public class CitiesApiController {
     // Villes de + de 500 habitants
     @GetMapping("findcitizensnb")
     public List<Cities> findAllByCitizensNb(@RequestParam int citizensNb) {
-        List<Cities> result = new ArrayList<>(){};
-        for(Cities cities : citiesDatabaseService.getCities()) {
-            if(cities.getCitizensNb() >= citizensNb) {
-                result.add(cities);
-            }
-        }
-        return result;
+        return citiesDatabaseService.getAllByCitizensNb(citizensNb);
     }
 }

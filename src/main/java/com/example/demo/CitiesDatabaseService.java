@@ -33,6 +33,6 @@ public class CitiesDatabaseService {
     }
 
     public List<Cities> getAllByCitizensNb(int citizensNb) {
-        return citiesRepository.findAllByCitizensNb(citizensNb);
+        return citiesRepository.CitizensNbGreaterThan(citizensNb);
     }
 }
