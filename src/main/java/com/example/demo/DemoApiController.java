@@ -35,6 +35,11 @@ public class DemoApiController {
         }
     }
 
+    @GetMapping("findallbynom")
+    public List<Personne> findAllByNom(@RequestParam String nom) {
+        return annuaireDatabaseService.getPersonnesByNom(nom);
+    }
+
 //    @Autowired //(injecte un objet dans une variable)
 //    AnnuaireService annuaireService;// = new AnnuaireService();
 

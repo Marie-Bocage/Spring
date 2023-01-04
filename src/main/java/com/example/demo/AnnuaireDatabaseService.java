@@ -32,4 +32,8 @@ public class AnnuaireDatabaseService {
     public Optional<Personne> getPersonneById(Integer id) {
         return personneRepository.findById(id);
     }
+
+    public List<Personne> getPersonnesByNom(String nom) {
+        return personneRepository.findAllByNom(nom);
+    }
 }
