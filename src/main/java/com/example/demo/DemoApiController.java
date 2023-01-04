@@ -35,9 +35,16 @@ public class DemoApiController {
         }
     }
 
+    // findallbynom?nom=bond
     @GetMapping("findallbynom")
     public List<Personne> findAllByNom(@RequestParam String nom) {
         return annuaireDatabaseService.getPersonnesByNom(nom);
+    }
+
+    // findallbynomandprenom?nom=bond&prennom=james
+    @GetMapping("findallbynomandprenom")
+    public List<Personne> findAllByNomAndPrenom(@RequestParam String nom, @RequestParam String prenom) {
+        return annuaireDatabaseService.getPersonneByNomAndPrenom(nom, prenom);
     }
 
 //    @Autowired //(injecte un objet dans une variable)
