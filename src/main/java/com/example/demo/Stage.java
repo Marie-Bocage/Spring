@@ -17,7 +17,7 @@ public class Stage {
     private String nom;
     private LocalDateTime horaire;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER) // Toutes les données de la base de donnée sont dans notre objet
     List<Personne> stagiaires = new ArrayList<>();
 
     public Stage() {

@@ -22,21 +22,21 @@ class StagesSpringTests {
 		stageRepository.save(salsa);
 	}
 
-//	@Test
-//	void testManyToMany() {
-//		Stage salsa = stageRepository.findById(1).get();
-//
-//		Personne alain = personneRepository.findById(5).get();
-//		Personne marie = personneRepository.findById(6).get();
-//
-//		salsa.addStagiaire(alain);
-//		salsa.addStagiaire(marie);
-//
-//		stageRepository.save(salsa);
-//	}
-
 	@Test
 	void testManyToMany() {
+		Stage salsa = stageRepository.findById(1).get();
+
+		Personne alain = personneRepository.findById(5).get();
+		Personne marie = personneRepository.findById(6).get();
+
+		salsa.addStagiaire(alain);
+		salsa.addStagiaire(marie);
+
+		stageRepository.save(salsa);
+	}
+
+	@Test
+	void testManyToMany2() {
 
 		Personne dev1 = new Personne("dev1", "dev1");
 		Personne dev2 = new Personne("dev2", "dev2");
