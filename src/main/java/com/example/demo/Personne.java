@@ -13,6 +13,9 @@ public class Personne {
     private String prenom;
     private String nom;
 
+    @ManyToOne
+    Addresse addresse;
+
     public Personne() {
     }
 
@@ -43,6 +46,14 @@ public class Personne {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Addresse getAddresse() {
+        return addresse;
+    }
+
+    public void setAddresse(Addresse addresse) {
+        this.addresse = addresse;
     }
 
     @Override
