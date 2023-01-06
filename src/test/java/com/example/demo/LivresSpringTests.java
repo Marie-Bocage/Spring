@@ -47,4 +47,13 @@ class LivresSpringTests {
 		livreRepository.save(livre);
 	}
 
+	@Test
+	void testResumeLivre() {
+		Livre livre = livreRepository.findById(5).get();
+
+		livre.setResume("Alors que l'oncle Vernon, la tante Pétunia et son cousin Dudley reçoivent d'importants invités à dîner, " +
+				"Harry Potter est contraint de passer la soirée dans sa chambre.");
+		livreRepository.save(livre);
+	}
+
 }
