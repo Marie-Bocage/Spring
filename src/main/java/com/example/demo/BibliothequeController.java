@@ -29,4 +29,9 @@ public class BibliothequeController {
     public void createLivre(@RequestBody Livre livre) {
         bibliothequeDatabaseService.addLivre(livre);
     }
+
+    @GetMapping("livre")
+    public List<Livre> getAllLivres() {
+        return bibliothequeDatabaseService.findAllLivres();
+    }
 }

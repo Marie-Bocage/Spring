@@ -29,5 +29,7 @@ public class BibliothequeDatabaseService {
         auteurRepository.save(auteur);
     }
 
-
+    public List<Livre> findAllLivres() {
+        return livreRepository.findAll();
+    }
 }
