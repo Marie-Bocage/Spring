@@ -48,4 +48,9 @@ public class BibliothequeController {
             return ResponseEntity.ok(optional.get());
         }
     }
+
+    @GetMapping("livremotcle")
+    public List<Livre> getAllLivreByMotCle(@RequestParam String motCle) {
+        return bibliothequeDatabaseService.findAllLivreByMotCle(motCle);
+    }
 }

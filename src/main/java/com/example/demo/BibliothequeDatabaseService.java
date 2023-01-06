@@ -37,4 +37,8 @@ public class BibliothequeDatabaseService {
     public Optional<Livre> findLivreById(Integer id) {
         return livreRepository.findById(id);
     }
+
+    public List<Livre> findAllLivreByMotCle(String motCle) {
+        return livreRepository.findLivreByMotCle(motCle);
+    }
 }
