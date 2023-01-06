@@ -3,6 +3,7 @@ package com.example.demo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,10 @@ public class Livre {
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Categorie> categories = new ArrayList<>();
+
+    private LocalDateTime dateEmprunt;
+
+    private LocalDateTime dateRetour;
 
     public Livre() {
     }
@@ -76,6 +81,22 @@ public class Livre {
         categories.add(categorie);
     }
 
+    public LocalDateTime getDateEmprunt() {
+        return dateEmprunt;
+    }
+
+    public void setDateEmprunt(LocalDateTime dateEmprunt) {
+        this.dateEmprunt = dateEmprunt;
+    }
+
+    public LocalDateTime getDateRetour() {
+        return dateRetour;
+    }
+
+    public void setDateRetour(LocalDateTime dateRetour) {
+        this.dateRetour = dateRetour;
+    }
+
     @Override
     public String toString() {
         return "Livre{" +
@@ -83,6 +104,8 @@ public class Livre {
                 ", titre='" + titre + '\'' +
                 ", auteur=" + auteur +
                 ", categories=" + categories +
+                ", dateEmprunt=" + dateEmprunt +
+                ", dateRetour=" + dateRetour +
                 '}';
     }
 }

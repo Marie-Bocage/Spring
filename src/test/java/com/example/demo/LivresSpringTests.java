@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
+
 @SpringBootTest
 class LivresSpringTests {
 
@@ -33,6 +35,15 @@ class LivresSpringTests {
 		Auteur auteur = auteurRepository.findById(2).get();
 
 		Livre livre = new Livre("Ca", auteur);
+		livreRepository.save(livre);
+	}
+
+	@Test
+	void testAJoutEmprunt() {
+		Livre livre = livreRepository.findById(1).get();
+
+		livre.setDateEmprunt(LocalDateTime.of(2023, 01,06,10,00));
+		livre.setDateRetour(LocalDateTime.of(2023, 02,06,10,00));
 		livreRepository.save(livre);
 	}
 

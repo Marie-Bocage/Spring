@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BibliothequeDatabaseService {
@@ -31,5 +32,9 @@ public class BibliothequeDatabaseService {
 
     public List<Livre> findAllLivres() {
         return livreRepository.findAll();
+    }
+
+    public Optional<Livre> findLivreById(Integer id) {
+        return livreRepository.findById(id);
     }
 }
