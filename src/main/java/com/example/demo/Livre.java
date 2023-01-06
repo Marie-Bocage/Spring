@@ -27,6 +27,8 @@ public class Livre {
 
     private LocalDateTime dateRetour;
 
+    private String resume;
+
     public Livre() {
     }
 
@@ -97,6 +99,14 @@ public class Livre {
         this.dateRetour = dateRetour;
     }
 
+    public String getResume() {
+        return resume;
+    }
+
+    public void setResume(String resume) {
+        this.resume = resume;
+    }
+
     @Override
     public String toString() {
         return "Livre{" +
@@ -106,6 +116,7 @@ public class Livre {
                 ", categories=" + categories +
                 ", dateEmprunt=" + dateEmprunt +
                 ", dateRetour=" + dateRetour +
+                ", resume='" + resume + '\'' +
                 '}';
     }
 }

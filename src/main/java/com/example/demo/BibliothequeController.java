@@ -34,4 +34,18 @@ public class BibliothequeController {
     public List<Livre> getAllLivres() {
         return bibliothequeDatabaseService.findAllLivres();
     }
+
+    @GetMapping("livre/{id}")
+    public ResponseEntity getDisponibiliteLivre(@PathVariable Integer id) {
+        Optional<Livre> optional = bibliothequeDatabaseService.findLivreById(id);
+
+        if(optional.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            if(optional.get().getDateEmprunt() != null) {
+                return ResponseEntity.badRequest().body("Livre non disponible.");
+            }
+            return ResponseEntity.ok(optional.get());
+        }
+    }
 }
