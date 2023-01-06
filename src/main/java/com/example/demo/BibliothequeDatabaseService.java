@@ -3,6 +3,8 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BibliothequeDatabaseService {
 
@@ -26,4 +28,6 @@ public class BibliothequeDatabaseService {
     public void addAuteur(Auteur auteur) {
         auteurRepository.save(auteur);
     }
+
+
 }

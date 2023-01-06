@@ -24,4 +24,9 @@ public class BibliothequeController {
     public void createAuteur(@RequestBody Auteur auteur) {
         bibliothequeDatabaseService.addAuteur(auteur);
     }
+
+    @PostMapping("livre")
+    public void createLivre(@RequestBody Livre livre) {
+        bibliothequeDatabaseService.addLivre(livre);
+    }
 }
