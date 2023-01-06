@@ -19,4 +19,9 @@ public class BibliothequeController {
     public void createCategorie(@RequestBody Categorie categorie) {
         bibliothequeDatabaseService.addCategorie(categorie);
     }
+
+    @PostMapping("auteur")
+    public void createAuteur(@RequestBody Auteur auteur) {
+        bibliothequeDatabaseService.addAuteur(auteur);
+    }
 }
