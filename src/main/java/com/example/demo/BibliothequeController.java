@@ -50,7 +50,11 @@ public class BibliothequeController {
     }
 
     @GetMapping("livremotcle")
-    public List<Livre> getAllLivreByMotCle(@RequestParam String motCle) {
-        return bibliothequeDatabaseService.findAllLivreByMotCle(motCle);
+    public ResponseEntity getAllLivreByMotCle(@RequestParam String motCle) {
+        List<Livre> livres = bibliothequeDatabaseService.findAllLivreByMotCle(motCle);
+        if(livres.isEmpty()) {
+            return ResponseEntity.badRequest().body("Aucun livre ne correspond à la recherche.");
+        }
+        return ResponseEntity.ok(livres);
     }
 }
