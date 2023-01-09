@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="/https://www.thymeleaf.org"> <head>
+    <meta charset="UTF-8"/>
+    <title>Hello Thymeleaf!</title> </head>
+<body>
+<h1>Ajoutez un Auteur !</h1>
+
+<form method="POST" action="auteurs">
+    <label>Nom : </label><input type="text" name="nom" id="nom">
+    <labe>Prénom : </labe><input type="text" name="prenom" id="prenom">
+
+    <input type="submit" value="Ajouter">
+</form>
+
+<ul>
+    <li th:each="a:${auteurs}" th:text="${ a.getNom } + ' ' + ${ a.getPrenom }"></li>
+</ul>
+</body>
+</html>

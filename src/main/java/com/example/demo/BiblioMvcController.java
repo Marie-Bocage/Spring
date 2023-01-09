@@ -52,4 +52,22 @@ public class BiblioMvcController {
         model.addAttribute("categories", categories);
         return "categorie.html";
     }
+
+    @GetMapping("auteurs")
+    public String afficheAuteur(Model model) {
+        List<Auteur> auteurs = bibliothequeDatabaseService.findAllAuteur();
+
+        model.addAttribute("auteurs", auteurs);
+        return "auteur.html";
+    }
+
+    @PostMapping("auteurs")
+    public String ajouterAuteur(Model model, Auteur auteur) {
+        bibliothequeDatabaseService.addAuteur(auteur);
+
+        List<Auteur> auteurs = bibliothequeDatabaseService.findAllAuteur();
+
+        model.addAttribute("auteurs", auteurs);
+        return "auteur.html";
+    }
 }

@@ -45,4 +45,8 @@ public class BibliothequeDatabaseService {
     public List<Categorie> findAllCategories() {
         return categorieRepository.findAll();
     }
+
+    public List<Auteur> findAllAuteur() {
+        return auteurRepository.findAll();
+    }
 }
