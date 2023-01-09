@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="/https://www.thymeleaf.org"> <head>
+    <meta charset="UTF-8"/>
+    <title>Hello Thymeleaf!</title> </head>
+<body>
+    <h1>Ajoutez une catégorie !</h1>
+
+    <form method="POST" action="categories">
+        <label>Nom : </label><input type="text" name="nom" id="nom">
+
+        <input type="submit" value="Ajouter">
+    </form>
+
+    <ul>
+        <li th:each="c:${categories}" th:text="${ c.getNom }"></li>
+    </ul>
+</body>
+</html>

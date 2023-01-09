@@ -41,4 +41,8 @@ public class BibliothequeDatabaseService {
     public List<Livre> findAllLivreByMotCle(String motCle) {
         return livreRepository.findLivreByMotCle(motCle);
     }
+
+    public List<Categorie> findAllCategories() {
+        return categorieRepository.findAll();
+    }
 }

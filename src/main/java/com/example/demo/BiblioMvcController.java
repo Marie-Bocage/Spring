@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,7 +18,7 @@ public class BiblioMvcController {
     @Autowired
     BibliothequeDatabaseService bibliothequeDatabaseService;
 
-    @RequestMapping("livres")
+    @GetMapping("livres")
     public String afficheLivres (Model model) {
         List<Livre> livres = bibliothequeDatabaseService.findAllLivres();
 
@@ -35,5 +32,24 @@ public class BiblioMvcController {
         model.addAttribute("optional", optional);
 
         return "livreById.html";
+    }
+
+    @GetMapping("categories")
+    public String afficheCategorie(Model model) {
+        List<Categorie> categories = bibliothequeDatabaseService.findAllCategories();
+
+        model.addAttribute("categories", categories);
+
+        return "categorie.html";
+    }
+
+    @PostMapping("categories")
+    public String ajouterCategorie(Categorie categorie, Model model) {
+        bibliothequeDatabaseService.addCategorie(categorie);
+
+        List<Categorie> categories = bibliothequeDatabaseService.findAllCategories();
+
+        model.addAttribute("categories", categories);
+        return "categorie.html";
     }
 }
