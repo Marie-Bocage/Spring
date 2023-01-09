@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="/https://www.thymeleaf.org"> <head>
+    <meta charset="UTF-8"/>
+    <title>Hello Thymeleaf!</title> </head>
+<body>
+    <h1>Liste des livres</h1>
+
+    <ul>
+        <li th:each="p:${ livres }"><a th:href="@{/livre(id=${p.getId})}" th:text="${p.getTitre}"></a></li>
+    </ul>
+</body>
+</html>

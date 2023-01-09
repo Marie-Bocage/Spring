@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import static java.time.temporal.ChronoUnit.DAYS;
 
 @RestController
 @RequestMapping("api")
@@ -43,7 +45,9 @@ public class BibliothequeController {
             return ResponseEntity.notFound().build();
         } else {
             if(optional.get().getDateEmprunt() != null) {
-                return ResponseEntity.badRequest().body("Livre non disponible.");
+                return ResponseEntity.badRequest().body("Livre non disponible. Disponible dans : " +
+                       DAYS.between(LocalDateTime.now(), optional.get().getDateRetour()) +
+                        " jours.");
             }
             return ResponseEntity.ok(optional.get());
         }
