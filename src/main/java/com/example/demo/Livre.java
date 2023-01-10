@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class Livre {
     private String titre;
 
     @ManyToOne
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private Auteur auteur;
 
     @ManyToMany(fetch = FetchType.EAGER)

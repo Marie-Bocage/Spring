@@ -1,12 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="/https://www.thymeleaf.org"> <head>
+<html lang="en" xmlns:th="/https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"> <head>
     <meta charset="UTF-8"/>
     <title>Hello Thymeleaf!</title> </head>
 <body>
-    <h1>Liste des livres</h1>
+    <h1>Bienvenue dans notre Biliothèque</h1>
 
+    <h2>Liste des livres</h2>
     <ul>
         <li th:each="p:${ livres }"><a th:href="@{/livre(id=${p.getId})}" th:text="${p.getTitre}"></a></li>
     </ul>
+
+    <h2>Ajouter un livre</h2>
+    <form method="POST" action="livres">
+        <label>Titre : </label><input type="text" name="titre" id="titre"><br><br>
+        <label>Auteur : </label>
+        <select name="auteur">
+            <option th:each="a:${ auteurs }"
+                    th:value="${a.id}"
+                    th:text="${ a.getNom } + ' ' + ${ a.getPrenom }">
+            </option>
+        </select><br><br>
+        <label>Catégorie(s) : </label>
+        <ul>
+            <li th:each="c:${categories}">
+                <input name="categories" type="checkbox" th:value="${c.id}" th:text="${c.nom}">
+            </li>
+        </ul>
+        <label>Résumé : </label><input type="text" name="resume" id="resume"><br>
+        <input type="submit" th:value="Ajouter">
+    </form>
 </body>
 </html>

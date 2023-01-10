@@ -21,8 +21,14 @@ public class BiblioMvcController {
     @GetMapping("livres")
     public String afficheLivres (Model model) {
         List<Livre> livres = bibliothequeDatabaseService.findAllLivres();
-
         model.addAttribute("livres", livres);
+
+        List<Auteur> auteurs = bibliothequeDatabaseService.findAllAuteur();
+        model.addAttribute("auteurs", auteurs);
+
+        List<Categorie> categories = bibliothequeDatabaseService.findAllCategories();
+        model.addAttribute("categories", categories);
+
         return "livres.html";
     }
 
@@ -32,6 +38,22 @@ public class BiblioMvcController {
         model.addAttribute("optional", optional);
 
         return "livreById.html";
+    }
+
+    @PostMapping("livres")
+    public String ajouterLivre(Model model, Livre livre) {
+        bibliothequeDatabaseService.addLivre(livre);
+
+        List<Livre> livres = bibliothequeDatabaseService.findAllLivres();
+        model.addAttribute("livres", livres);
+
+        List<Auteur> auteurs = bibliothequeDatabaseService.findAllAuteur();
+        model.addAttribute("auteurs", auteurs);
+
+        List<Categorie> categories = bibliothequeDatabaseService.findAllCategories();
+        model.addAttribute("categories", categories);
+
+        return "livres.html";
     }
 
     @GetMapping("categories")
