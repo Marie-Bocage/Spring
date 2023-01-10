@@ -2,11 +2,32 @@
 <html lang="en" xmlns:th="/https://www.thymeleaf.org"> <head>
     <meta charset="UTF-8"/>
     <title>Hello Thymeleaf!</title> </head>
+    <style>
+        #categories li
+        {
+        display: inline;
+        }
+
+        #categories
+        {
+        padding: 0;
+        margin: 0px;
+        }
+    </style>
 <body>
     <h1 th:if="${ optional.isPresent }" th:text="${ optional.get.getTitre }"></h1>
 
     <p th:if="${ optional.isEmpty }">Livre non trouvé.</p>
-    <p th:if="${ optional.isPresent }" th:text="${ optional.get }"></p>
+    <p th:if="${ optional.isPresent }">
+        Titre : [(${ optional.get.getTitre })] <br>
+        Auteur : [(${ optional.get.getAuteur.getNom })] [(${ optional.get.getAuteur.getPrenom })]
+                <ul id="categories">
+                    Catégorie(s) : <li th:each="c:${optional.get.getCategories}" th:text="' ' + ${c.nom} + ' '"></li>
+                </ul>
+        Résumé : [(${ optional.get.getResume })] <br>
+        Date d'emprunt : [(${ optional.get.getDateEmprunt })] <br>
+        Date de retour : [(${ optional.get.getDateRetour })] <br>
+    </p>
 
     <a th:href="@{/livres}">Retour à la liste de livres</a>
 </body>
